@@ -64,10 +64,11 @@ function shouldFetchSuggestions(state) {
   }
 }
 
-export function fetchSuggestionsIfNeeded(data) {
+export function fetchSuggestionsIfNeeded() {
   return (dispatch, getState) => {
+    const { lat = null, lon = null } = getState().defaultStore;
     if (shouldFetchSuggestions(getState())) {
-      return dispatch(fetchSuggestion(data))
+      return dispatch(fetchSuggestion({lat, lon}))
     }
   }
 }

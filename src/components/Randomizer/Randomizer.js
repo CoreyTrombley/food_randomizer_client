@@ -27,7 +27,7 @@ class Randomizer extends Component {
   }
 
   componentDidMount() {
-    const { dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(fetchSuggestionsIfNeeded());
   }
 
@@ -45,12 +45,12 @@ class Randomizer extends Component {
   setGeoLoc(position) {
     const { dispatch } = this.props;
     dispatch(setLocation(position));
+    dispatch(fetchSuggestionsIfNeeded());
   }
 
   fetchSuggestion() {
-     const { dispatch, lat, lon } = this.props;
-     dispatch(setSuggestion());
-    dispatch(fetchSuggestionsIfNeeded({lat, lon}));
+    const { dispatch } = this.props;
+    dispatch(setSuggestion());
   }
 
   // display the card if there is a suggestion to display
